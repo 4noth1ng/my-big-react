@@ -1,15 +1,41 @@
 import { beginWork } from './beginWork'
 import { completeWork } from './completeWork'
 import type { FiberNode } from './fiber'
+import { FiberRootNode, createWorkInProgres } from './fiber';
+import { HostRoot } from './workTags';
 
 // 正在工作的 fiberNode
 let workInProgress: FiberNode | null = null
 
-function prepareFreshStack(fiber: FiberNode) {
-  workInProgress = fiber
+function prepareFreshStack(root: FiberRootNode) {
+  workInProgress = createWorkInProgres(root.current, {})
 }
 
-function renderRoot(root: FiberNode) {
+// 将renderRoot和update更新关联起来
+export function scheduleUpdateOnFiber(fiber: FiberNode) {
+  // 调度功能
+  // fiberRootNode 
+  // 因为调用this.setState等方法时，fiber不是根节点fiber, 所以需要向上遍历获取真实根fiber, 从而得到fiberRootNode
+  const root = markUpdateFromFiberToRoot(fiber)
+  renderRoot(root)
+}
+// 从当前节点向上遍历获取根节点
+function markUpdateFromFiberToRoot(fiber: FiberNode) {
+  // 除了hostRootFiber上只有stateNode指针指向fiberRootNode, 其他fiber都是return指针指向上一级
+  let node = fiber
+  let parent = node.return
+
+  while(parent !== null) {
+    node = parent
+    parent = node.return
+  }
+  if(node.tag === HostRoot) {
+    return node.stateNode
+  }
+  return null
+}
+
+function renderRoot(root: FiberRootNode) {
   // 初始化开始工作的 fiberNode
   prepareFreshStack(root)
 

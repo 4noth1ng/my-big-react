@@ -17,9 +17,7 @@ export interface UpdateQueue<State> {
 
 export const createUpdate = <State>(action: Action<State>) =>  {
     return {
-        shared: {
-            pending: null
-        }
+        action
     }
 }
 
