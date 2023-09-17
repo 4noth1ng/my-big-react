@@ -21,17 +21,17 @@ export const createUpdate = <State>(action: Action<State>) =>  {
     }
 }
 
-export const createUpdateQueue = <Action>() => {
+export const createUpdateQueue = <State>() => {
     return {
         shared: {
             pending: null
         }
-    } as UpdateQueue<Action>
+    } as UpdateQueue<State>
 }
 // 增加update
-export const enqueueUpdate = <Action>(
-    UpdateQueue: UpdateQueue<Action>,
-    update: Update<Action>
+export const enqueueUpdate = <State>(
+    UpdateQueue: UpdateQueue<State>,
+    update: Update<State>
 ) => {
     UpdateQueue.shared.pending = update
 }
