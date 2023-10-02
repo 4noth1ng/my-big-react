@@ -22,9 +22,11 @@ export function getPackageJSON(pkgName) {
 }
 
 export function getBaseRollupPlugins({
-	alias = {	__DEV__: true
+  alias = {
+    __DEV__: true,
+    preventAssignment: true
 	},
 	typescript = {}
 } = {}) {
-	return [replace(), cjs(), ts(typescript)];
+	return [replace(alias), cjs(), ts(typescript)];
 }

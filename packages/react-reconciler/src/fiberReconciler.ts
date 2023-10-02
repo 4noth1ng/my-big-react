@@ -1,4 +1,4 @@
-import { Containter } from 'hostConfig';
+import { Container } from 'hostConfig';
 import { FiberNode, FiberRootNode } from './fiber';
 import { HostRoot } from './workTags';
 import { createUpdateQueue, createUpdate, enqueueUpdate, UpdateQueue } from './updateQueue';
@@ -8,7 +8,7 @@ import { scheduleUpdateOnFiber } from './workLoop';
 
 
 // 调用ReactDom.createRoot(rootElement)时调用createContainer
-export function createContainer(container: Containter) {
+export function createContainer(container: Container) {
     // 挂载节点hostRoot的fiber结构
     const hostRootFiber = new FiberNode(HostRoot, {}, null)
     // 真正的根节点fiberRootNode

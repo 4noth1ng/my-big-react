@@ -15,6 +15,9 @@ importers:
       '@hyoban/eslint-config-react':
         specifier: ^0.1.8
         version: 0.1.8(eslint@8.29.0)(typescript@4.9.4)
+      '@rollup/plugin-alias':
+        specifier: ^4.0.4
+        version: registry.npmmirror.com/@rollup/plugin-alias@4.0.4(rollup@3.7.1)
       '@rollup/plugin-commonjs':
         specifier: ^25.0.4
         version: registry.npmmirror.com/@rollup/plugin-commonjs@25.0.4(rollup@3.7.1)
@@ -41,6 +44,18 @@ importers:
     dependencies:
       shared:
         specifier: workspace:*
+        version: link:../shared
+
+  packages/react-dom:
+    dependencies:
+      react:
+        specifier: 'workspace: *'
+        version: link:../react
+      react-reconciler:
+        specifier: 'workspace: *'
+        version: link:../react-reconciler
+      shared:
+        specifier: 'workspace: *'
         version: link:../shared
 
   packages/react-reconciler:
@@ -1178,7 +1193,7 @@ packages:
       fast-glob: 3.2.12
       ignore: 5.2.1
       merge2: 1.4.1
-      slash: 3.0.0
+      slash: registry.npmmirror.com/slash@3.0.0
     dev: true
 
   /gopd@1.0.1:
@@ -1845,11 +1860,6 @@ packages:
       object-inspect: 1.12.2
     dev: true
 
-  /slash@3.0.0:
-    resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
-    engines: {node: '>=8'}
-    dev: true
-
   /string.prototype.matchall@4.0.8:
     resolution: {integrity: sha512-6zOCOcJ+RJAQshcTvXPHoxoQGONa3e/Lqx90wUA+wEzX78sg5Bo+1tQo4N0pohS0erG9qtCqJDjNCQBjeWVxyg==}
     dependencies:
@@ -2088,6 +2098,22 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  registry.npmmirror.com/@rollup/plugin-alias@4.0.4(rollup@3.7.1):
+    resolution: {integrity: sha512-0CaAY238SMtYAWEXXptWSR8iz8NYZnH7zNBKuJ14xFJSGwLtPgjvXYsoApAHfzYXXH1ejxpVw7WlHss3zhh9SQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@rollup/plugin-alias/-/plugin-alias-4.0.4.tgz}
+    id: registry.npmmirror.com/@rollup/plugin-alias/4.0.4
+    name: '@rollup/plugin-alias'
+    version: 4.0.4
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      rollup: 3.7.1
+      slash: registry.npmmirror.com/slash@4.0.0
+    dev: true
 
   registry.npmmirror.com/@rollup/plugin-commonjs@25.0.4(rollup@3.7.1):
     resolution: {integrity: sha512-L92Vz9WUZXDnlQQl3EwbypJR4+DM2EbsO+/KOcEkP4Mc6Ct453EeDB2uH9lgRwj4w5yflgNpq9pHOiY8aoUXBQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@rollup/plugin-commonjs/-/plugin-commonjs-25.0.4.tgz}
@@ -2881,6 +2907,20 @@ packages:
     name: signal-exit
     version: 4.1.0
     engines: {node: '>=14'}
+    dev: true
+
+  registry.npmmirror.com/slash@3.0.0:
+    resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/slash/-/slash-3.0.0.tgz}
+    name: slash
+    version: 3.0.0
+    engines: {node: '>=8'}
+    dev: true
+
+  registry.npmmirror.com/slash@4.0.0:
+    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/slash/-/slash-4.0.0.tgz}
+    name: slash
+    version: 4.0.0
+    engines: {node: '>=12'}
     dev: true
 
   registry.npmmirror.com/sort-keys@2.0.0:
