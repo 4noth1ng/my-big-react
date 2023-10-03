@@ -6,7 +6,7 @@ import {
 } from 'hostConfig';
 import { FiberNode } from './fiber';
 import { NoFlags } from './fiberFlags';
-import { HostRoot, HostText, HostComponent } from './workTags';
+import { HostRoot, HostText, HostComponent, FunctionComponent } from './workTags';
 
 export const completeWork = (wip: FiberNode) => {
 	// 递归中的归
@@ -41,7 +41,9 @@ export const completeWork = (wip: FiberNode) => {
 		case HostRoot:
 			bubbleProperties(wip);
 			return null;
-
+		case FunctionComponent: 
+			bubbleProperties(wip)
+			return null
 		default:
 			if (__DEV__) {
 				console.warn('未处理的completeWork情况', wip);
