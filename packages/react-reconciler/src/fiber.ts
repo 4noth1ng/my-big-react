@@ -52,9 +52,9 @@ export class FiberNode {
 		// 用于在 wip 和 current 之间切换
 		this.alternate = null;
 		// 副作用，更新标记
-    this.flags = NoFlags;
+    	this.flags = NoFlags;
     // 子fiberTree冒泡上来的所有flags
-    this.subtreeFlags = NoFlags;
+    	this.subtreeFlags = NoFlags;
 		this.updateQueue = null;
 	}
 }
